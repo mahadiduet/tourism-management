@@ -1,16 +1,16 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../FirebaseProvider/FirebaseProvider";
 
 const Registration = () => {
 
-    const {createUser, updateUser} = useContext(AuthContext);
-
+    const { createUser, updateUser } = useContext(AuthContext);
+    const navigate = useNavigate();
     // console.log(createUser);
 
-    
 
-    const handleAddUser = e =>{
+
+    const handleAddUser = e => {
         e.preventDefault();
         const from = e.target;
         const name = from.name.value;
@@ -18,44 +18,55 @@ const Registration = () => {
         const photoUrl = from.photoUrl.value;
         const password = from.password.value;
 
-        createUser(email, password)
-        .then(result => {
-            // updateUser(name, photoUrl)
-            // .then((updateUser) => {
-            //     console.log(updateUser)
-            //   }).catch((error) => {
-            //     console.log(error);
-            //   });
-            const userEmail = result.user.email;
-            const createdAt = result.user.metadata.createdAt;
-            const lastSignInTime = result.user.metadata.lastSignInTime;
+        if (password.length < 6) {
+            // { toast.error('Password less  then 6 character') }
+            alert('Password less  then 6 character');
+            return;
+        }
+        if (!/(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
+            // { toast.error('Password Uppercase or Lowercase missinng') }
+            alert('Password Uppercase or Lowercase missinng');
+            return;
+        }
 
-            const user = {userEmail, createdAt, lastSignInTime}
-            console.log(user);
-            // Data pass to MongoDB by API
-            fetch('http://localhost:5000/user',{
-                method: 'POST',
-                headers:{
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(user)
+        createUser(email, password)
+            .then(result => {
+                updateUser(name, photoUrl)
+                .then((updateUser) => {
+                    console.log(updateUser)
+                  }).catch((error) => {
+                    console.log(error);
+                  });
+                const userEmail = result.user.email;
+                const createdAt = result.user.metadata.createdAt;
+                const lastSignInTime = result.user.metadata.lastSignInTime;
+
+                const user = { userEmail, createdAt, lastSignInTime }
+                console.log(user);
+                // Data pass to MongoDB by API
+                fetch('http://localhost:5000/user', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                    })
+                navigate('/');
             })
-            .then(res => res.json())
-            .then(data=>{
-                console.log(data);
-            })
-            // console.log(userEmail, createdAt, lastSignInTime)
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage)
-          });
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage)
+            });
     }
 
 
     return (
-       
+
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
             <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-indigo-600 lg:max-w-xl">
                 <h1 className="text-3xl font-semibold text-center text-indigo-700 underline uppercase decoration-wavy">
@@ -115,7 +126,7 @@ const Registration = () => {
                     {" "}
                     Already have an account?{" "}
                     <Link className="font-medium text-indigo-600 hover:underline" to='/login'> Sign In</Link>
-                    
+
                 </p>
             </div>
         </div>

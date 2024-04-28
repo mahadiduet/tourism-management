@@ -1,12 +1,40 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../FirebaseProvider/FirebaseProvider";
 
 const Header = () => {
+
+    const { user, logout } = useContext(AuthContext);
+    console.log(user);
+    // console.log(user.displayName);
+
 
     const menu = <>
         <Link className="p-2 font-mono font-semibold text-xl border-r border-r-1 border-dotted border-gray-400 hover:bg-violet-300" to='/'>Home</Link>
         <Link className="p-2 font-mono font-semibold text-xl border-r border-r-1 border-dotted border-gray-400 hover:bg-violet-300">All Tourists Spot</Link>
-        <Link className="p-2 font-mono font-semibold text-xl border-r border-r-1 border-dotted border-gray-400 hover:bg-violet-300">Add Tourists Spot</Link>
+        <Link className="p-2 font-mono font-semibold text-xl border-r border-r-1 border-dotted border-gray-400 hover:bg-violet-300" to='/add_tourism_spot'>Add Tourists Spot</Link>
         <Link className="p-2 font-mono font-semibold text-xl border-r border-r-1 border-dotted border-gray-400 hover:bg-violet-300">My List</Link>
+    </>
+
+    const btn = <>
+        <Link className="btn" to='/registration'>Sign Up</Link>
+        <Link className="btn" to='/login'>Sign In</Link>
+    </>
+
+    const profile = <>
+        <div>
+            <div className="dropdown dropdown-end">
+                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                    <div className="w-10 rounded-full">
+                        {user?.photoURL ? (<img alt="Tailwind CSS Navbar component" src={user.photoURL} />) : (<img alt="Tailwind CSS Navbar component" src="https://i.ibb.co/9rrBVK6/man.jpg" />)}
+                    </div>
+                </div>
+                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                    <Link>{user?.displayName ? `${user.displayName}` : ''}</Link>
+                    <Link><button onClick={logout}>Logout</button></Link>
+                </ul>
+            </div>
+        </div>
     </>
 
     return (
@@ -28,27 +56,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="btn" to='/registration'>Sign Up</Link>
-                <Link className="btn" to='/login'>Sign In</Link>
-                <div>
-                    <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                            </div>
-                        </div>
-                        <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                            <li>
-                                <a className="justify-between">
-                                    Profile
-                                    <span className="badge">New</span>
-                                </a>
-                            </li>
-                            <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
+                { user ? profile : btn}
             </div>
         </div>
     );
