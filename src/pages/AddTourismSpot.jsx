@@ -1,11 +1,13 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../FirebaseProvider/FirebaseProvider";
+import { toast } from "react-toastify";
 
 const AddTourismSpot = () => {
 
     const {user} = useContext(AuthContext);
     console.log(user);
+    const navigate = useNavigate();
 
     const handleAddTourismSpot = e => {
         e.preventDefault();
@@ -32,7 +34,12 @@ const AddTourismSpot = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
+                if(data.insertedId){
+                    toast.success('Tourism added successfull!');
+                    from.reset();
+                }
+                
             })
     }
 
@@ -157,6 +164,7 @@ const AddTourismSpot = () => {
                             <input
                                 type="text" name="user_email" defaultValue={user?.email? user.email:''}
                                 className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                disabled
                             />
                         </div>
                         <div className="mb-2">
@@ -168,6 +176,7 @@ const AddTourismSpot = () => {
                             <input
                                 type="text" name="user_name" defaultValue={user?.displayName? user.displayName:''}
                                 className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                disabled
                             />
                         </div>
 

@@ -48,8 +48,8 @@ const Login = () => {
     const handleGithubLogIn = () => {
         githubLogin()
             .then((result) => {
-                // const user = result.user;
-                // console.log(user);
+                const user = result.user;
+                console.log(user);
                 toast.success('You are successfully logged in')
                 navigate(existLocation);
             })

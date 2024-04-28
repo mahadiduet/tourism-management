@@ -11,9 +11,9 @@ const Header = () => {
 
     const menu = <>
         <Link className="p-2 font-mono font-semibold text-xl border-r border-r-1 border-dotted border-gray-400 hover:bg-violet-300" to='/'>Home</Link>
-        <Link className="p-2 font-mono font-semibold text-xl border-r border-r-1 border-dotted border-gray-400 hover:bg-violet-300">All Tourists Spot</Link>
+        <Link className="p-2 font-mono font-semibold text-xl border-r border-r-1 border-dotted border-gray-400 hover:bg-violet-300" to='/all_tourism_spot'>All Tourists Spot</Link>
         <Link className="p-2 font-mono font-semibold text-xl border-r border-r-1 border-dotted border-gray-400 hover:bg-violet-300" to='/add_tourism_spot'>Add Tourists Spot</Link>
-        <Link className="p-2 font-mono font-semibold text-xl border-r border-r-1 border-dotted border-gray-400 hover:bg-violet-300">My List</Link>
+        <Link className="p-2 font-mono font-semibold text-xl border-r border-r-1 border-dotted border-gray-400 hover:bg-violet-300" to='/my_tourism_spot'>My List</Link>
     </>
 
     const btn = <>

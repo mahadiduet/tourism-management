@@ -7,6 +7,8 @@ import Error from "../component/Error";
 import Registration from "../pages/Registration";
 import Login from "../pages/Login";
 import AddTourismSpot from "../pages/AddTourismSpot";
+import AllTourismSpot from "../pages/AllTourismSpot";
+import MyTourismSpot from "../pages/MyTourismSpot";
 
   export const router = createBrowserRouter([
     {
@@ -30,6 +32,15 @@ import AddTourismSpot from "../pages/AddTourismSpot";
         {
           path:'/add_tourism_spot',
           element: <AddTourismSpot />
+        },
+        {
+          path:'/all_tourism_spot',
+          element: <AllTourismSpot />,
+          loader: ()=>fetch('http://localhost:5000/all-tourism-sport')
+        },
+        {
+          path: '/my_tourism_spot',
+          element:<MyTourismSpot />
         }
       ]
     },

@@ -1,9 +1,35 @@
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
-const TouristsSpots = () => {
+const TouristsSpots = ({ tourism }) => {
+
+    const { _id, image, tourists_spot_name, country_Name, location, short_description, average_cost, seasonality, travel_time, totalVisitorsPerYear, user_email, user_name } = tourism;
+    // console.log(_id)
+    const handleTourismDelete = (e) =>{
+        console.log(_id);
+        e.preventDefault();
+        fetch(`http://localhost:5000/my-tourism-sport/${_id}`, {
+            method: 'DELETE',
+          })
+          .then(res=>res.json())
+          .then(data=>{
+            if(data.deletedCount > 0){
+                toast.success('Tourism spot delete successfull!');
+            }
+            console.log(data);
+          })
+    }
+
     return (
-        <div>
-            <h1>Tourism Spot</h1>
-        </div>
+            <tr className="">
+                <td className="border border-gray-500">{tourists_spot_name}</td>
+                <td className="border border-gray-500">{country_Name}</td>
+                <td className="border border-gray-500">{location}</td>
+                <td className="flex gap-5 border border-gray-500">
+                    <button>Update</button>
+                    <button onClick={handleTourismDelete}>Delete</button>
+                </td>
+            </tr>
     );
 };
 
