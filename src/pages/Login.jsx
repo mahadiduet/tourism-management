@@ -1,8 +1,13 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../FirebaseProvider/FirebaseProvider";
+import { toast } from 'react-toastify';
 
 const Login = () => {
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const existLocation = location?.state || '/';
 
     const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
 
@@ -13,14 +18,12 @@ const Login = () => {
         const email = from.email.value;
         const password = from.password.value;
         loginUser(email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                console.log(user)
+            .then((result) => {
+                toast.success('You are successfully logged in')
+                navigate(existLocation);
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage)
+                { toast.error('Username and password not match') }
             });
     }
 
@@ -29,8 +32,10 @@ const Login = () => {
     const handleGoogleLogIn = () => {
         googleLogin()
             .then((result) => {
-                const user = result.user;
-                console.log(user);
+                // const user = result.user;
+                // console.log(user);
+                toast.success('You are successfully logged in')
+                navigate(existLocation);
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -43,8 +48,10 @@ const Login = () => {
     const handleGithubLogIn = () => {
         githubLogin()
             .then((result) => {
-                const user = result.user;
-                console.log(user);
+                // const user = result.user;
+                // console.log(user);
+                toast.success('You are successfully logged in')
+                navigate(existLocation);
             })
             .catch((error) => {
                 const errorCode = error.code;

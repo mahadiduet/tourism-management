@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../FirebaseProvider/FirebaseProvider";
+import { toast } from "react-toastify";
 
 const Registration = () => {
 
@@ -19,30 +20,28 @@ const Registration = () => {
         const password = from.password.value;
 
         if (password.length < 6) {
-            // { toast.error('Password less  then 6 character') }
-            alert('Password less  then 6 character');
+            { toast.warning('Please give me minimum 6 character!') }
             return;
         }
         if (!/(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
-            // { toast.error('Password Uppercase or Lowercase missinng') }
-            alert('Password Uppercase or Lowercase missinng');
+            { toast.warning('You have must be provide password with uppercase or Lowercase!') }
             return;
         }
 
         createUser(email, password)
             .then(result => {
                 updateUser(name, photoUrl)
-                .then((updateUser) => {
-                    console.log(updateUser)
-                  }).catch((error) => {
-                    console.log(error);
-                  });
+                    .then((updateUser) => {
+                        console.log(updateUser)
+                    }).catch((error) => {
+                        console.log(error);
+                    });
                 const userEmail = result.user.email;
                 const createdAt = result.user.metadata.createdAt;
                 const lastSignInTime = result.user.metadata.lastSignInTime;
 
                 const user = { userEmail, createdAt, lastSignInTime }
-                console.log(user);
+
                 // Data pass to MongoDB by API
                 fetch('http://localhost:5000/user', {
                     method: 'POST',
@@ -55,12 +54,13 @@ const Registration = () => {
                     .then(data => {
                         console.log(data);
                     })
+                toast.success('You are successfully registration.');
                 navigate('/');
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage)
+                if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
+                    toast.error('This user Already exist, please login.')
+                }
             });
     }
 
