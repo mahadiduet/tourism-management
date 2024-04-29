@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const CountrySection = () => {
     return (
         <div className="grid grid-cols-3 gap-4">
-            <Link to='bangladesh'>
+            <Link to='/country/Bangladesh'>
                 <div>
                     <div className="hero min-h-[300px]" style={{ backgroundImage: 'url(https://i.ibb.co/FhyKHd2/Bangladesh.jpg)' }}>
                         <div className="hero-overlay bg-opacity-60"></div>
@@ -15,7 +15,7 @@ const CountrySection = () => {
                     </div>
                 </div>
             </Link>
-            <Link to='thailand'>
+            <Link to='/country/Thailand'>
                 <div>
                     <div className="hero min-h-[300px]" style={{ backgroundImage: 'url(https://i.ibb.co/pztttKP/Thailand.jpg)' }}>
                         <div className="hero-overlay bg-opacity-60"></div>
@@ -27,7 +27,7 @@ const CountrySection = () => {
                     </div>
                 </div>
             </Link>
-            <Link to='indonesia'>
+            <Link to='/country/Indonesia'>
                 <div>
                     <div className="hero min-h-[300px]" style={{ backgroundImage: 'url(https://i.ibb.co/xm68mJf/Indonesia.webp)' }}>
                         <div className="hero-overlay bg-opacity-60"></div>
@@ -39,8 +39,8 @@ const CountrySection = () => {
                     </div>
                 </div>
             </Link>
-            <Link>
-                <div to='Malaysia'>
+            <Link to='/country/Malaysia'>
+                <div>
                     <div className="hero min-h-[300px]" style={{ backgroundImage: 'url(https://i.ibb.co/1brsF8S/Malaysia.jpg)' }}>
                         <div className="hero-overlay bg-opacity-60"></div>
                         <div className="hero-content text-center text-neutral-content">
@@ -51,7 +51,7 @@ const CountrySection = () => {
                     </div>
                 </div>
             </Link>
-            <Link to='vietnam'>
+            <Link to='/country/Vietnam'>
                 <div>
                     <div className="hero min-h-[300px]" style={{ backgroundImage: 'url(https://i.ibb.co/qNgW2Sz/Vietnam.jpg)' }}>
                         <div className="hero-overlay bg-opacity-60"></div>
@@ -63,7 +63,7 @@ const CountrySection = () => {
                     </div>
                 </div>
             </Link>
-            <Link to='cambodia'>
+            <Link to='/country/Cambodia'>
                 <div>
                     <div className="hero min-h-[300px]" style={{ backgroundImage: 'url(https://i.ibb.co/Fn4wMrT/Cambodia.jpg)' }}>
                         <div className="hero-overlay bg-opacity-60"></div>
