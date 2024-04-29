@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import Slider from "../component/Slider";
 import Tourism from "../component/Tourism";
 import CountrySection from "../component/CountrySection";
+import ExtraSection from "../component/ExtraSection";
 
 const Home = () => {
     const tourisms = useLoaderData();
@@ -26,6 +27,7 @@ const Home = () => {
                 </p>
             </div>
             <CountrySection />
+            <ExtraSection />
         </div>
 
 
