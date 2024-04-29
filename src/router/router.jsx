@@ -12,6 +12,7 @@ import MyTourismSpot from "../pages/MyTourismSpot";
 import ViewDetails from "../pages/ViewDetails";
 import UpdateTourism from "../pages/UpdateTourism";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import CountryTourism from "../pages/CountryTourism";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +62,11 @@ export const router = createBrowserRouter([
           <UpdateTourism />
         </PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/all-tourism-sport/${params.id}`)
+      },
+      {
+        path: '/country/:id',
+        element: <CountryTourism />,
+        loader: ({ params }) => fetch(`http://localhost:5000/country/${params.id}`)
       }
     ]
   },
