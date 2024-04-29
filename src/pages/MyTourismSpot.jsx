@@ -6,9 +6,10 @@ const MyTourismSpot = () => {
 
     const [myTourismData, setMyTourismData] = useState([]);
     // console.log(myTourismData)
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const email = user?.email;
     // console.log(email);
+    console.log(loading);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,7 +30,7 @@ const MyTourismSpot = () => {
     return (
         <div>
             <h1 className="font-playfair text-5xl font-bold text-[#131313] text-center mt-8 mb-8">My Tourism Spot</h1>
-            
+                    {/* { loading? 'Loading......':''} */}
                     <table className="table">
                         {/* head */}
                         <thead>
@@ -41,7 +42,7 @@ const MyTourismSpot = () => {
                             </tr>
                         </thead>
                         <tbody>
-
+                        { loading? 'Loading......':''}
                             {
                                 myTourismData.map(tourism => <TouristsSpots key={tourism._id} tourism={tourism}></TouristsSpots>)
                             }

@@ -26,7 +26,8 @@ const TouristsSpots = ({ tourism }) => {
                 <td className="border border-gray-500">{country_Name}</td>
                 <td className="border border-gray-500">{location}</td>
                 <td className="flex gap-5 border border-gray-500">
-                    <button>Update</button>
+                    <Link to={`/update-tourism/${_id}`}><button>Update</button></Link>
+                    
                     <button onClick={handleTourismDelete}>Delete</button>
                 </td>
             </tr>

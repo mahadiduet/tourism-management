@@ -9,6 +9,8 @@ import Login from "../pages/Login";
 import AddTourismSpot from "../pages/AddTourismSpot";
 import AllTourismSpot from "../pages/AllTourismSpot";
 import MyTourismSpot from "../pages/MyTourismSpot";
+import ViewDetails from "../pages/ViewDetails";
+import UpdateTourism from "../pages/UpdateTourism";
 
   export const router = createBrowserRouter([
     {
@@ -41,6 +43,15 @@ import MyTourismSpot from "../pages/MyTourismSpot";
         {
           path: '/my_tourism_spot',
           element:<MyTourismSpot />
+        },
+        {
+          path:'/tourism-details/:id',
+          element:<ViewDetails />
+        },
+        {
+          path:'/update-tourism/:id',
+          element: <UpdateTourism />,
+          loader: ({params})=>fetch(`http://localhost:5000/all-tourism-sport/${params.id}`)
         }
       ]
     },
