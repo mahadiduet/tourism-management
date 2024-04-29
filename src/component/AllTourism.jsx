@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const AllTourism = ({ tourism }) => {
-    const { _id, image, tourists_spot_name, country_Name, location, short_description, average_cost, seasonality, travel_time, totalVisitorsPerYear, user_email, user_name } = tourism;
+    const { _id, image, tourists_spot_name, country_Name, location, average_cost, seasonality, travel_time, totalVisitorsPerYear, user_email, user_name } = tourism;
     return (
         <div className="bg-base-200 p-4 rounded-lg">
             <div className="flex-col lg:flex-row">

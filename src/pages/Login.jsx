@@ -4,10 +4,12 @@ import { AuthContext } from "../FirebaseProvider/FirebaseProvider";
 import { toast } from 'react-toastify';
 
 const Login = () => {
-
+    const { user } = useContext(AuthContext);
+    
     const navigate = useNavigate();
     const location = useLocation();
     const existLocation = location?.state || '/';
+    
 
     const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
 

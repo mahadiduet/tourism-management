@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { useLoaderData, useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const UpdateTourism = () => {
     const navigate = useNavigate();
-    const locatio = useLocation();
-    const existUrl = locatio?.state || '/';
+    // const location1 = useLocation();
+    // const path = location1?.state || '/';
+    // console.log(location1.state);
     const data = useLoaderData();
-    console.log("Data:", data);
-    const {_id, image, tourists_spot_name, country_Name, location, short_description, average_cost, seasonality, travel_time, totalVisitorsPerYear, user_email, user_name } = data;
+    const {_id, image, tourists_spot_name, location, short_description, average_cost, seasonality, travel_time, totalVisitorsPerYear } = data;
 
     const handleUpdateTourism = e =>{
         e.preventDefault();
@@ -18,7 +18,7 @@ const UpdateTourism = () => {
         const country_Name = from.country_Name.value;
         const location = from.location.value;
         const short_description = from.short_description.value;
-        const average_cost = from.average_cost.value;
+        const average_cost = parseFloat(from.average_cost.value);
         const seasonality = from.seasonality.value;
         const travel_time = from.travel_time.value;
         const totalVisitorsPerYear = from.totalVisitorsPerYear.value;
@@ -32,12 +32,10 @@ const UpdateTourism = () => {
             body: JSON.stringify(tourism)
         })
             .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                
+            .then(data => {                
                 if(data.modifiedCount){
                     toast.success('Tourism updated successfull!');
-                    navigate(existUrl);
+                    navigate('/my_tourism_spot');
                 }
                 
             })

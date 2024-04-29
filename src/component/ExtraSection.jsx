@@ -2,6 +2,7 @@
 const ExtraSection = () => {
     return (
         <div>
+            <h1 className="font-playfair text-5xl font-bold text-[#131313] text-center mt-8 mb-8">Tourism Information</h1>
             <div className="text-center grid grid-cols-4 gap-5 my-6">
                 <div className="border-2 border-gray-600 rounded-lg p-4 mt-4">
                     <h1 className="text-2xl">Special Activities</h1>
