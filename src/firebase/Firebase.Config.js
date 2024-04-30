@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBIBKxKK6d3GGNQiQr4DipmkEN9JOzF2Q4",
-  authDomain: "tourism-management-54a7c.firebaseapp.com",
-  projectId: "tourism-management-54a7c",
-  storageBucket: "tourism-management-54a7c.appspot.com",
-  messagingSenderId: "761778849929",
-  appId: "1:761778849929:web:7f77008a0df7f6c93fde58"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
