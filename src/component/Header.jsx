@@ -4,9 +4,8 @@ import { AuthContext } from "../FirebaseProvider/FirebaseProvider";
 
 const Header = () => {
 
-    const { user, logout } = useContext(AuthContext);
+    const { user, logout, theme, toggleTheme } = useContext(AuthContext);
     console.log(user);
-    // console.log(user.displayName);
 
 
     const menu = <>
@@ -56,8 +55,11 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                { user ? profile : btn}
+                {user ? profile : btn}
             </div>
+            <button onClick={toggleTheme}>
+                <input type="checkbox" className="toggle" checked />
+            </button>
         </div>
     );
 };

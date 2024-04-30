@@ -14,6 +14,17 @@ const FirebaseProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
+    useEffect(() => {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
+    const toggleTheme = () => {
+        setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+    };
+
     // creat an user
     const createUser = (email, password) => {
         setLoading(true);
@@ -77,7 +88,9 @@ const FirebaseProvider = ({ children }) => {
         githubLogin,
         user,
         loading,
-        logout
+        logout,
+        theme,
+        toggleTheme
     }
 
     return (
