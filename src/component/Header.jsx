@@ -58,7 +58,7 @@ const Header = () => {
                 {user ? profile : btn}
             </div>
             <button onClick={toggleTheme}>
-                <input type="checkbox" className="toggle" checked />
+                <input type="checkbox" className="toggle ml-4" checked />
             </button>
         </div>
     );
