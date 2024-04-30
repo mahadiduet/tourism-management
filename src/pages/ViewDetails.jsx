@@ -15,7 +15,7 @@ const ViewDetails = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                await fetch(`http://localhost:5000/view-details?id=${params.id}`)
+                await fetch(`https://tourism-server-management.vercel.app/view-details?id=${params.id}`)
                     .then(res => res.json())
                     .then(data => {
                         setViewData(data);

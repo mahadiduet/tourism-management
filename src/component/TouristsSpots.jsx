@@ -8,7 +8,7 @@ const TouristsSpots = ({ tourism }) => {
     const handleTourismDelete = (e) =>{
         console.log(_id);
         e.preventDefault();
-        fetch(`http://localhost:5000/my-tourism-sport/${_id}`, {
+        fetch(`https://tourism-server-management.vercel.app/my-tourism-sport/${_id}`, {
             method: 'DELETE',
           })
           .then(res=>res.json())
@@ -26,9 +26,9 @@ const TouristsSpots = ({ tourism }) => {
                 <td className="border border-gray-500">{country_Name}</td>
                 <td className="border border-gray-500">{location}</td>
                 <td className="flex gap-5 border border-gray-500">
-                    <Link to={`/update-tourism/${_id}`}><button>Update</button></Link>
+                    <Link to={`/update-tourism/${_id}`}><button className="bg-cyan-300 p-2 rounded-lg">Update</button></Link>
                     
-                    <button onClick={handleTourismDelete}>Delete</button>
+                    <button className="bg-cyan-300 p-2 rounded-lg" onClick={handleTourismDelete}>Delete</button>
                 </td>
             </tr>
     );

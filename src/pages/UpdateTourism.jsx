@@ -4,9 +4,6 @@ import { toast } from "react-toastify";
 
 const UpdateTourism = () => {
     const navigate = useNavigate();
-    // const location1 = useLocation();
-    // const path = location1?.state || '/';
-    // console.log(location1.state);
     const data = useLoaderData();
     const {_id, image, tourists_spot_name, location, short_description, average_cost, seasonality, travel_time, totalVisitorsPerYear } = data;
 
@@ -24,7 +21,7 @@ const UpdateTourism = () => {
         const totalVisitorsPerYear = from.totalVisitorsPerYear.value;
         const tourism = {image, tourists_spot_name, country_Name, location, short_description, average_cost, seasonality, travel_time, totalVisitorsPerYear};
         console.log(tourism);
-        fetch(`http://localhost:5000/update-tourism-spot/${_id}`, {
+        fetch(`https://tourism-server-management.vercel.app/update-tourism-spot/${_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

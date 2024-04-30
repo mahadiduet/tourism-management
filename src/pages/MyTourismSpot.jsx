@@ -14,7 +14,7 @@ const MyTourismSpot = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                await fetch(`http://localhost:5000/my-tourism-sport?email=${email}`)
+                await fetch(`https://tourism-server-management.vercel.app/my-tourism-sport?email=${email}`)
                     .then(res => res.json())
                     .then(data => {
                         setMyTourismData(data);
@@ -28,8 +28,8 @@ const MyTourismSpot = () => {
     }, [email]);
 
     return (
-        <div>
-            <h1 className="font-playfair text-5xl font-bold text-[#131313] text-center mt-8 mb-8">My Tourism Spot</h1>
+        <div className="bg-cyan-100">
+            <h1 className="font-playfair text-5xl font-bold text-[#131313] text-center pt-8 mb-8">My Tourism Spot</h1>
                     {/* { loading? 'Loading......':''} */}
                     <table className="table">
                         {/* head */}

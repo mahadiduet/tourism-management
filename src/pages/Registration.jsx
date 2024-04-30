@@ -43,7 +43,7 @@ const Registration = () => {
                 const user = { userEmail, createdAt, lastSignInTime }
 
                 // Data pass to MongoDB by API
-                fetch('http://localhost:5000/user', {
+                fetch('https://tourism-server-management.vercel.app/user', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

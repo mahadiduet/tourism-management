@@ -5,6 +5,7 @@ import { getAuth } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// console.log(process.env.REACT_APP_MY_VARIABLE)
 const firebaseConfig = {
   apiKey: "AIzaSyBIBKxKK6d3GGNQiQr4DipmkEN9JOzF2Q4",
   authDomain: "tourism-management-54a7c.firebaseapp.com",
