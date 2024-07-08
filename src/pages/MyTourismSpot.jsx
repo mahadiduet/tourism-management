@@ -14,7 +14,7 @@ const MyTourismSpot = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                await fetch(`https://tourism-server-management.vercel.app/my-tourism-sport?email=${email}`)
+                await fetch(`http://localhost:5000/my-tourism-sport?email=${email}`)
                     .then(res => res.json())
                     .then(data => {
                         setMyTourismData(data);

@@ -8,7 +8,7 @@ const TouristsSpots = ({ tourism }) => {
     const handleTourismDelete = (e) =>{
         console.log(_id);
         e.preventDefault();
-        fetch(`https://tourism-server-management.vercel.app/my-tourism-sport/${_id}`, {
+        fetch(`http://localhost:5000/my-tourism-sport/${_id}`, {
             method: 'DELETE',
           })
           .then(res=>res.json())

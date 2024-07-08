@@ -3,20 +3,29 @@
 Live URL: https://tourism-management-54a7c.web.app/
 
 Feature Of this website:
->Website is asia related tourism information
->Tourism place of Asia 
->Tourism cost of Asia
->All tourism view one page
->My added tourism is one page
->Tourism update and delete if login user only their added tourism
+1. Website is asia related tourism information
+2. Tourism place of Asia 
+3. Tourism cost of Asia
+4. All tourism view one page
+5. My added tourism is one page
+6. Tourism update and delete if login user only their added tourism
 
-Doc Related Issues:
->Add two extra section
->No use Lorem ipsum text
->Loading in private/protected route
->Responsive all type device
->Environment cofig file is hide
->Use two react package
+Used Technology:
+1. React js
+2. Firebase Authentication
+3. MongoDB
+4. Axios
+5. Node JS for API
+6. Tailwind CSS
+7. JS
+8. HTML
+9. Carusel slider
+10. jwt
+11. Helmet
+12. Private route
+13. Admin Route
+14. React Icons
+
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

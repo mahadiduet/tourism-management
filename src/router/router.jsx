@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
-        loader: () => fetch('https://tourism-server-management.vercel.app/tourism-sport')
+        loader: () => fetch('http://localhost:5000/tourism-sport')
       },
       {
         path: '/registration',
@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
       {
         path: '/all_tourism_spot',
         element: <AllTourismSpot />,
-        loader: () => fetch('https://tourism-server-management.vercel.app/all-tourism-sport')
+        loader: () => fetch('http://localhost:5000/allTourismCount')
       },
       {
         path: '/my_tourism_spot',
@@ -61,12 +61,12 @@ export const router = createBrowserRouter([
         element: <PrivateRoute>
           <UpdateTourism />
         </PrivateRoute>,
-        loader: ({ params }) => fetch(`https://tourism-server-management.vercel.app/all-tourism-sport/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/all-tourism-sport/${params.id}`)
       },
       {
         path: '/country/:id',
         element: <CountryTourism />,
-        loader: ({ params }) => fetch(`https://tourism-server-management.vercel.app/country/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/country/${params.id}`)
       }
     ]
   },
